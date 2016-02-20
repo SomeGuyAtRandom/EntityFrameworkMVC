@@ -23,11 +23,12 @@ namespace Web.Models
 		[Required(ErrorMessage = "Last name is required")]
 		public string LastName { get; set; }
 
-		public string PhoneNumber { get; set; }
+		// Will be added in a future video
+		//public string PhoneNumber { get; set; }
 
 		[Column("birth_date")]
 		[Required(ErrorMessage = "Birthday is required")]
-		public DateTime? BirthDate { get; set; }
+		public DateTime BirthDate { get; set; }
 
 	}
 }
