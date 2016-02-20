@@ -1,0 +1,46 @@
+﻿@using Web.Models
+@model Person
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<table>
+	<thead>
+		<tr>
+			<th>Tag</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>@Html.DisplayNameFor(model => model.Id)</td>
+			<td>@Html.DisplayFor(model => model.Id)</td>
+		</tr>
+		<tr>
+			<td>@Html.DisplayNameFor(model => model.FirstName)</td>
+			<td>@Html.DisplayFor(model => model.FirstName)</td>
+		</tr>
+		<tr>
+			<td>@Html.DisplayNameFor(model => model.LastName)</td>
+			<td>@Html.DisplayFor(model => model.LastName)</td>
+		</tr>
+		<tr>
+			<td>@Html.DisplayNameFor(model => model.BirthDate)</td>
+			<td>@Html.DisplayFor(model => model.BirthDate)</td>
+		</tr>
+	</tbody>
+
+</table>
+<script>
+
+function setActiveTab()
+{
+	$("#navbar li").removeClass("active");
+	$("#person").addClass("active");
+}
+
+</script>

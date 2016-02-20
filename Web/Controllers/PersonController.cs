@@ -20,6 +20,8 @@ namespace Web.Controllers
         public ActionResult Index()
         {
 			List< Person > people;
+			people = this.db.People.ToList ();
+
 			try{
 				people = this.db.People.ToList ();
 			} catch (Exception e) {
@@ -28,26 +30,25 @@ namespace Web.Controllers
 			}
 
 			return View (people);
+
         }
 
-		public ActionResult TestAddition()
-		{
-			Person person = new Person ()
-			{
-				FirstName = "Some",
-				LastName = "Guy",
-				BirthDate = DateTime.Now
-			};
-
-			db.People.Add(person); 
-			db.SaveChanges(); 
-			return RedirectToAction("Index", "Home"); 
-
-		}
-
-        public ActionResult Details(int id)
+		public ActionResult Details(int? Id)
         {
-            return View ();
+			if (Id == null)
+			{
+				return RedirectToAction("Index");
+			}
+
+			Person person;
+			person = this.db.People.Find(Id);
+
+			if (person == null)
+			{
+				return HttpNotFound();
+			}
+
+			return View ( person );
         }
 
         public ActionResult Create()
