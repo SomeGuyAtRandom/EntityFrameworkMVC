@@ -28,7 +28,7 @@ namespace Web.Models
 
 		[Column("birth_date")]
 		[Required(ErrorMessage = "Birthday is required")]
-		public DateTime BirthDate { get; set; }
+		public DateTime? BirthDate { get; set; }
 
 	}
 }

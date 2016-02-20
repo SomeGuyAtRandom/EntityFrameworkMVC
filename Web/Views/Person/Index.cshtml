@@ -1,0 +1,44 @@
+﻿@using Web.Models;
+@model IEnumerable < Person >
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div>
+	<table>
+		<thead>
+			<tr>
+				<td>First Name</td>
+				<td>Last Name</td>
+				<td>@Html.DisplayNameFor(model => model.BirthDate)</td>
+				<td>View</td>
+				<td>Edit</td>
+				<td>Delete</td>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach(Person p in @Model)
+		{
+			
+			<tr>
+				<td>@p.FirstName</td>
+				<td>@p.LastName</td>
+				<td>@p.BirthDate</td>
+				<td>
+					<a href=@Url.Action("Details", "Person", new { Id = p.Id }) >
+	    				<button class = "btn btn-sm btn-info">view</button>
+					</a>
+				</td>
+				<td></td>
+				<td></td>
+			</tr>
+		}
+			
+		</tbody>
+	</table>
+
+</div>

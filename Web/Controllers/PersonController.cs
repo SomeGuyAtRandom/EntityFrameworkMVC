@@ -19,7 +19,15 @@ namespace Web.Controllers
 
         public ActionResult Index()
         {
-            return View ();
+			List< Person > people;
+			try{
+				people = this.db.People.ToList ();
+			} catch (Exception e) {
+				string message = e.ToString ();
+				return RedirectToAction("Index");
+			}
+
+			return View (people);
         }
 
 		public ActionResult TestAddition()
