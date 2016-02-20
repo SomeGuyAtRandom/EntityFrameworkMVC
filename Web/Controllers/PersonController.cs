@@ -57,13 +57,25 @@ namespace Web.Controllers
         } 
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+		public ActionResult Create([Bind (Include = "FirstName,LastName,BirthDate")]Person p)
         {
-            try {
-                return RedirectToAction ("Index");
-            } catch {
-                return View ();
-            }
+			DateTime dBirthDate = new DateTime();
+			try{
+				dBirthDate = DateTime.Parse (Request.Form["BirthDate"]);
+				p.BirthDate = dBirthDate;
+			}
+			catch{
+				ModelState["BirthDate"].Errors.Clear();
+				ModelState ["BirthDate"].Errors.Add ("Date Not Cool");
+			}
+
+			if (ModelState.IsValid) 
+			{ 
+				db.People.Add(p); 
+				db.SaveChanges(); 
+				return RedirectToAction("Index"); 
+			} 
+			return View ();
         }
         
         public ActionResult Edit(int id)

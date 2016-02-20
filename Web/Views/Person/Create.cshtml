@@ -1,13 +1,15 @@
-﻿@using Web.Models
-@model Person
-
+﻿@model Web.Models.Person
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Create</h2>
+
+@using (Html.BeginForm())  
+{
+
 <div class="row">
     <div class="col-md-6">
 <table class="table">
@@ -18,35 +20,41 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>@Html.DisplayNameFor(model => model.Id)</td>
-			<td>@Html.DisplayFor(model => model.Id)</td>
-		</tr>
+		
 		<tr>
 			<td>@Html.DisplayNameFor(model => model.FirstName)</td>
-			<td>@Html.DisplayFor(model => model.FirstName)</td>
+			<td>
+				@Html.EditorFor(model => model.FirstName) 
+				@Html.ValidationMessageFor(model => model.FirstName) 
+			</td>
 		</tr>
 		<tr>
 			<td>@Html.DisplayNameFor(model => model.LastName)</td>
-			<td>@Html.DisplayFor(model => model.LastName)</td>
+			<td>
+				@Html.EditorFor(model => model.LastName) 
+				@Html.ValidationMessageFor(model => model.LastName) 
+			</td>
 		</tr>
 		<tr>
 			<td>@Html.DisplayNameFor(model => model.BirthDate)</td>
-			<td>@Html.DisplayFor(model => model.BirthDate)</td>
+			<td>
+				@Html.EditorFor(model => model.BirthDate) 
+				@Html.ValidationMessageFor(model => model.BirthDate) 
+			</td>
 		</tr>
 	</tbody>
 
 </table>
-@Html.ActionLink("List", "Index", "Person", null, new { @class = "btn btn-primary"})
+<input type="submit"  class="btn btn-primary" value="Save" /> 
 </div>
 </div>
+}
 
 <script>
-
 function setActiveTab()
 {
+	$("#BirthDate").datepicker();
 	$("#navbar li").removeClass("active");
 	$("#person").addClass("active");
 }
-
 </script>

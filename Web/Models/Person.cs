@@ -4,7 +4,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Web.Models
 {
+	public class PersonConfig
+	{
+		[Display(Name = "First Name")]
+		public string FirstName { get; set; }
 
+		[Display(Name = "Last Name")]
+		public string LastName { get; set; }
+
+		[Display(Name = "Birthday")]
+		public DateTime? BirthDate { get; set; }
+	}
+
+	[MetadataType(typeof(PersonConfig))]
 	[Table("people")]
 	public class Person
 	{
