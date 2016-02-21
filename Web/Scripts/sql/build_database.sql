@@ -21,3 +21,14 @@ insert into people (first_name,last_name,birth_date) values ('Some', 'Guy','0001
 
 use mvc5;
 select * from people;
+
+
+-- added at video 7
+ALTER TABLE people ADD PhoneNumber varchar(10);
+DROP DATABASE mvc5;
+SHOW DATABASES;
+use mvc5;
+show tables;
+desc people;
+select count(*) from __MigrationHistory;
+

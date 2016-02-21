@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Data.Entity;
+using Web.ContextDbs;
 
 namespace Web
 {
@@ -29,6 +31,8 @@ namespace Web
 
 		protected void Application_Start ()
 		{
+			Database.SetInitializer (new DropCreateDatabaseAlways <PeopleContext>());
+
 			AreaRegistration.RegisterAllAreas ();
 			RegisterGlobalFilters (GlobalFilters.Filters);
 			RegisterRoutes (RouteTable.Routes);

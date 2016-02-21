@@ -20,7 +20,6 @@ namespace Web.Controllers
         public ActionResult Index()
         {
 			List< Person > people;
-			people = this.db.People.ToList ();
 
 			try{
 				people = this.db.People.ToList ();
