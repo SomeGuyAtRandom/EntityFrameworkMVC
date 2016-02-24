@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Web.Models;
 using Web.ContextDbs;
 
+using PagedList;
+
 namespace Web.Controllers
 {
     public class PersonController : Controller
@@ -17,18 +19,17 @@ namespace Web.Controllers
 			this.db = new PeopleContext ();
 		}
 
-        public ActionResult Index()
+		private int numRows = 5;
+
+		public ActionResult Index(int? page)
         {
 			List< Person > people;
+			people = this.db.People.ToList ();
+			List< Person > SortedPeople = people.OrderBy(p=>p.BirthDate).ToList();
 
-			try{
-				people = this.db.People.ToList ();
-			} catch (Exception e) {
-				string message = e.ToString ();
-				return RedirectToAction("Index");
-			}
+			int iPage = page ?? 1;
 
-			return View (people);
+			return View ("Index", SortedPeople.ToPagedList( iPage, numRows) );
 
         }
 

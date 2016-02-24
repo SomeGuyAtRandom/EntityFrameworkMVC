@@ -1,5 +1,7 @@
 ﻿@using Web.Models;
-@model IEnumerable < Person >
+@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList < Person >
 
 @{
     ViewBag.Title = "Index";
@@ -12,9 +14,9 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<td>@Html.DisplayNameFor(model => model.FirstName)</td>
-				<td>@Html.DisplayNameFor(model => model.LastName)</td>
-				<td>@Html.DisplayNameFor(model => model.BirthDate)</td>
+				<td>@Html.DisplayNameFor(model => model.First().FirstName)</td>
+				<td>@Html.DisplayNameFor(model => model.First().LastName)</td>
+				<td>@Html.DisplayNameFor(model => model.First().BirthDate)</td>
 				<td>View</td>
 				<td>Edit</td>
 				<td>Delete</td>
@@ -40,6 +42,7 @@
 			
 		</tbody>
 	</table>
+	@Html.PagedListPager( Model , page => Url.Action("Index", new { page }))
 	@Html.ActionLink("Create New", "Create", "Person", null, new { @class = "btn btn-sm btn-success"})
 </div>
 

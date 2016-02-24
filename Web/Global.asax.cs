@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Data.Entity;
 using Web.ContextDbs;
+using Web.ContextDbs.Builder;
 
 namespace Web
 {
@@ -31,7 +32,9 @@ namespace Web
 
 		protected void Application_Start ()
 		{
-			Database.SetInitializer (new DropCreateDatabaseAlways <PeopleContext>());
+			//Database.SetInitializer (new DropCreateDatabaseAlways <PeopleContext>());
+			//Database.SetInitializer (new DropCreateDatabaseIfModelChanges <PeopleContext>());
+			Database.SetInitializer (new MySqlSeeder());
 
 			AreaRegistration.RegisterAllAreas ();
 			RegisterGlobalFilters (GlobalFilters.Filters);
