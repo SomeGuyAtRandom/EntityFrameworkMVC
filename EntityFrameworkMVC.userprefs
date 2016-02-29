@@ -1,6 +1,14 @@
 ﻿<Properties StartupItem="Web/Web.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="firefox" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Web/Global.asax.cs">
+    <Files>
+      <File FileName="Web/Global.asax.cs" Line="32" Column="3" />
+      <File FileName="Web/ContextDbs/DbBuilder/MySqlSeeder.cs" Line="1" Column="1" />
+      <File FileName="Web/Views/Person/Index.cshtml" Line="1" Column="1" />
+      <File FileName="Web/Controllers/PersonController.cs" Line="107" Column="30" />
+      <File FileName="Web/Global.asax" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

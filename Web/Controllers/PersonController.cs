@@ -98,14 +98,19 @@ namespace Web.Controllers
             return View ();
         }
 
-        [HttpPost]
+		[HttpDelete]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try {
-                return RedirectToAction ("Index");
-            } catch {
-                return View ();
-            }
+			Person person;
+			try {
+				person = db.People.Find(id);
+				db.People.Remove(person);
+				db.SaveChanges();
+				return RedirectToAction ("Index", new { page = collection ["hiddenPage"] });
+			} catch {
+				return RedirectToAction ("Index", "Home");
+			}
+            
         }
     }
 }

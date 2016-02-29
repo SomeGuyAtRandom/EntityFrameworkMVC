@@ -36,7 +36,15 @@
 					</a>
 				</td>
 				<td></td>
-				<td></td>
+				<td>
+				@using (Html.BeginForm("Delete", "Person", new { Id = p.Id }))
+				{
+					@Html.HttpMethodOverride(HttpVerbs.Delete)
+
+					<input type='hidden' id='hiddenPage' name='hiddenPage' value='@Request.QueryString["page"]'/>
+					<input type="submit" value="Delete" class="btn btn-sm btn-warning" onclick="return confirm('Delete @p.FirstName @p.LastName');"/>
+				}
+				</td>
 			</tr>
 		}
 			

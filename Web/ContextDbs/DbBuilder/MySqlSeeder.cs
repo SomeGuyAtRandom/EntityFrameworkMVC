@@ -7,7 +7,7 @@ namespace Web.ContextDbs.Builder
 	// DropCreateDatabaseAlways 
 	// DropCreateDatabaseIfModelChanges 
 
-	public class MySqlSeeder :DropCreateDatabaseAlways <PeopleContext>
+	public class MySqlSeeder :DropCreateDatabaseIfModelChanges <PeopleContext>
 	{
 		public MySqlSeeder ()
 		{
